@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,8 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return inertia::render('index');
-});
+Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('blogs', [BlogController::class, 'index']);
+
+Route::get('blogs/create',[BlogController::class, 'create']);
+Route::post('blogs',[BlogController::class, 'store']);
