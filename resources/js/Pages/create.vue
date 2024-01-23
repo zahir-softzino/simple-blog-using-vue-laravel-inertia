@@ -2,6 +2,10 @@
 
     import { router, useForm } from '@inertiajs/vue3';
     
+    defineProps({
+        errors:Object
+    });
+
     const form= useForm({
         title:null,
         description: null,
@@ -24,10 +28,16 @@
                 <div class="mb-3">
                     <label for="exampleInputTitle" class="form-label">Title</label>
                     <input type="string" class="form-control" v-model="form.title" id="exampleInputTitle" aria-describedby="emailHelp">
+                    <div class="text-denger text-xs" v-if="errors.name">
+                        {{ errors.name }}
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputDiscription" class="form-label">Description</label>
                     <input type="text" class="form-control" v-model="form.description" id="exampleInputdescription">
+                    <div class="text-denger text-xs" v-if="errors.description">
+                        {{ errors.description }}
+                    </div>
                 </div>
 
                 <div class="mb-3">

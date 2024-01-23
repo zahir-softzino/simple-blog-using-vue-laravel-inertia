@@ -11,13 +11,16 @@ use App\Models\Blog;
 class BlogController extends Controller
 {
     public function index(){
-        return inertia::render('index');
+    //    return $blogs = Blog::all();
+        return inertia::render('index',['blogs' => Blog::all()]);
     }
 
     public function create(){
         return inertia::render('create');
     }
 
+
+    // Store Blogs
     public function store(Request $request){
         $validated = $request->validate([
             'title' => 'required|unique:blogs',

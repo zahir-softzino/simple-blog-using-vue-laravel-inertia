@@ -1,5 +1,7 @@
 <script setup>
 
+defineProps({blogs:Object})
+
 </script>
 
 <template>
@@ -10,23 +12,38 @@
             </div>
             <div class="card-body">
 
-                <div class="col-md-12">
+                <!-- <div class="col-md-12"> -->
                     <div class="row">
-                        <div class="col-md-6">
+                        <!-- <div v-for="blog in blogs">
+                            {{ blog.title }} <br>
+                        </div> -->
+                        <div class="col-md-6" v-for="blog in blogs">
+                            
                             <div class="card">
-                                <div class="card-image">
-                                    <img src="#" alt="" srcset="">
+                                <div class="card-image" v-if="blog.image">
+                                    <script>
+                                        export default {
+                                            data() {
+                                                return {
+                                                imagePath: "{{blog.image}}",
+                                                };
+                                            },
+                                            };
+                                    </script>
+                                    <img :src="imagePath" alt="Image" width="100%" height="100%"/>
                                 </div>
                                 <div class="card-title">
-                                    <h4>this is title</h4>
+                                    <h4>{{ blog.title }}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eaque, quos repellat? Rerum, quidem molestiae quam optio et consequuntur voluptates laborum vel porro aspernatur repellat sit nihil dignissimos quae cumque dolore?</p>
+                                    <p>{{ blog.description }}</p>
                                     <button class="btn btn-info">Read More</button>
                                 </div>
                             </div>
+
+                            
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="card">
                                 <div class="card-image">
                                     <img src="#" alt="" srcset="">
@@ -40,11 +57,12 @@
                                 </div>
                             </div>
                             
-                        </div>
+                        </div> -->
                         
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
     </div>
 </template>
+
