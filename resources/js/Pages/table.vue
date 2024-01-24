@@ -1,6 +1,16 @@
 <script setup>
+import { router } from '@inertiajs/vue3';
+
 
 defineProps({blogs:Object})
+
+function distroy(id){
+    router.delete('/blogs/'+id);
+}
+
+function edit(id){
+    router.get('/blogs/'+id);
+}
 
 </script>
 

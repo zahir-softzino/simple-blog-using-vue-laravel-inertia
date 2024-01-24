@@ -16,7 +16,12 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
-Route::get('blogs', [BlogController::class, 'tableShow']);
+Route::get('blogs', [BlogController::class, 'tableShow'])->name('blogs.table');
 
 Route::get('blogs/create',[BlogController::class, 'create']);
 Route::post('blogs',[BlogController::class, 'store']);
+Route::get('blogs/{blog}/singleshow',[BlogController::class, 'show']);
+Route::get('blogs/{blog}',[BlogController::class, 'edit']);
+Route::put('blogs/{blog}',[BlogController::class, 'update']);
+Route::delete('/blogs/{blog}',[BlogController::class, 'distroy']);
+

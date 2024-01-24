@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -51,21 +50,54 @@ class BlogController extends Controller
 
     }
 
-    public function show(){
+    public function show(Blog $blog){
+        return inertia::render('singleView',['blog' => $blog]);
+    }
+
+    public function edit(Blog $blog){
+        return inertia::render('edit', ['blog' => $blog]);
 
     }
 
-    public function edit(Blogs $blog){
-        return $blog;
+    public function update(Request $request, Blog $blog){
+        return $request->title;
+        $validated = $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'nullable'
+        ]);
+        // return $validated;
+
+        
+        $fileName = null;
+        if($request->hasFile('image')){            
+            File::delete(public_path($blog->image));
+            $fileName = time(). '.' . $request->file('image')->getclientOriginalExtension();
+            $request->file('image')->move(public_path('/uploads/images'), $fileName);
+            $fileName = '/uploads/images/'. $fileName;
+        }
+
+        $mainBlog = Blog::find($blog);
+        // return $mainBlog;
+
+        $mainBlog->title = $request->title;
+        $mainBlog->description = $request->description;
+        $mainBlog->image = $fileName;
+        
+        // // return 'abcd';
+        // return $mainBlog;
+        $blog ->update($mainBlog);
+        // $validated->image = $fileName;
+
+        // $blog->update($validated);
+        
+        return Redirect::route('blogs.table');
 
     }
 
-    public function update(){
-
-    }
-
-    public function distroy(){
-
+    public function distroy(Blog $blog){
+        $blog->delete();
+        return Redirect::route('blogs.table');
     }
 
     

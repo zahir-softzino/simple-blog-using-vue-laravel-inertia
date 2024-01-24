@@ -29,8 +29,8 @@
                     <div class="mb-3">
                         <label for="exampleInputTitle" class="form-label">Title</label>
                         <input type="string" class="form-control" v-model="form.title" id="exampleInputTitle" aria-describedby="emailHelp">
-                        <div class="text-denger text-xs" v-if="errors.name">
-                            {{ errors.name }}
+                        <div class="text-denger text-xs" v-if="errors.title">
+                            {{ errors.title }}
                         </div>
                     </div>
                     <div class="mb-3">

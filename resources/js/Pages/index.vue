@@ -1,6 +1,12 @@
 <script setup>
 
-defineProps({blogs:Object})
+    import { router } from '@inertiajs/vue3';
+
+    defineProps({blogs:Object})
+
+    function show(id){
+        router.get('/blogs/'+id+'/singleshow');
+    }
 
 </script>
 
@@ -19,7 +25,7 @@ defineProps({blogs:Object})
                         </div> -->
                         <div class="col-md-6" v-for="blog in blogs">
                             
-                            <div class="card">
+                            <div class="card mt-2">
                                 <div class="card-image" v-if="blog.image">
                                     <img :src="blog.image" alt="Image" width="100%" height="100%"/>
                                 </div>
@@ -30,8 +36,9 @@ defineProps({blogs:Object})
                                     <h4>{{ blog.title }}</h4>
                                 </div>
                                 <div class="card-body">
-                                    <p>{{ blog.description }}</p>
-                                    <button class="btn btn-info">Read More</button>
+                                    <!-- <p>{{ substr_replace(blog.description), '...', 200) }}</p> -->
+                                    <p>{{ (blog.description).substring(0,500) }}</p>
+                                    <button class="btn btn-info" @click.prevent="show(blog.id)">Read More</button>
                                 </div>
                             </div>
 
