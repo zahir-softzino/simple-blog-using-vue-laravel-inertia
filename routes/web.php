@@ -16,7 +16,7 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
-Route::get('blogs', [BlogController::class, 'index']);
+Route::get('blogs', [BlogController::class, 'tableShow']);
 
 Route::get('blogs/create',[BlogController::class, 'create']);
 Route::post('blogs',[BlogController::class, 'store']);

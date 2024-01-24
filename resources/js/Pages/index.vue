@@ -21,15 +21,9 @@ defineProps({blogs:Object})
                             
                             <div class="card">
                                 <div class="card-image" v-if="blog.image">
-                                    <script>
-                                        export default {
-                                            data() {
-                                                return {
-                                                imagePath: "{{blog.image}}",
-                                                };
-                                            },
-                                            };
-                                    </script>
+                                    <img :src="blog.image" alt="Image" width="100%" height="100%"/>
+                                </div>
+                                <div class="card-image" v-else>                                    
                                     <img :src="imagePath" alt="Image" width="100%" height="100%"/>
                                 </div>
                                 <div class="card-title">
@@ -66,3 +60,12 @@ defineProps({blogs:Object})
     </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      imagePath: "/blog-definition.png",
+    };
+  },
+};
+</script>

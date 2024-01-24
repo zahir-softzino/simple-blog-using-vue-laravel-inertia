@@ -46,6 +46,11 @@ class BlogController extends Controller
         return Redirect::route('blogs.index');
     }
 
+    public function tableShow(){
+        return inertia::render('table',['blogs' => Blog::all()]);
+
+    }
+
     public function show(){
 
     }
