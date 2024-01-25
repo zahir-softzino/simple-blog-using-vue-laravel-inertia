@@ -12,13 +12,25 @@ function edit(id){
     router.get('/blogs/'+id);
 }
 
+function add(){
+    router.get('/blogs/create');
+}
 </script>
 
 <template>
     <div class="container mt-5">
         <div class="card">
             <div class="card-header d-flex justify-content-center">
-                <h3>Welcome to Simple Blog Using <strong>vue</strong> and <strong>inertia</strong></h3>
+                <div class="col-md-12 row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <h3>Welcome to Simple Blog Using <strong>vue</strong> and <strong>inertia</strong></h3>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-end">
+                        <button class="btn btn-primary" @click.prevent="add()">Create new blog</button>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
 

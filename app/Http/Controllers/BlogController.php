@@ -21,6 +21,7 @@ class BlogController extends Controller
 
     // Store Blogs
     public function store(Request $request){
+        
         $validated = $request->validate([
             'title' => 'required|unique:blogs',
             'description' => 'required',
@@ -60,13 +61,14 @@ class BlogController extends Controller
     }
 
     public function update(Request $request, Blog $blog){
-        return $request->title;
+        // return $request->title;        
+        
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
             'image' => 'nullable'
         ]);
-        // return $validated;
+        return $validated;
 
         
         $fileName = null;
@@ -77,16 +79,16 @@ class BlogController extends Controller
             $fileName = '/uploads/images/'. $fileName;
         }
 
-        $mainBlog = Blog::find($blog);
-        // return $mainBlog;
+        // $mainBlog = Blog::find($blog);
+        // // return $mainBlog;
 
-        $mainBlog->title = $request->title;
-        $mainBlog->description = $request->description;
-        $mainBlog->image = $fileName;
+        // $mainBlog->title = $request->title;
+        // $mainBlog->description = $request->description;
+        // $mainBlog->image = $fileName;
         
         // // return 'abcd';
         // return $mainBlog;
-        $blog ->update($mainBlog);
+        // $blog ->update($mainBlog);
         // $validated->image = $fileName;
 
         // $blog->update($validated);

@@ -11,10 +11,11 @@
 </script>
 
 <template>
-    <div class="container">
+    <div class="container" style="background-color: whitesmoke;">
         <div class="card">
             <div class="card-header d-flex justify-content-center">
                 <h3>Welcome to Simple Blog Using <strong>vue</strong> and <strong>inertia</strong></h3>
+
             </div>
             <div class="card-body">
 
@@ -25,9 +26,9 @@
                         </div> -->
                         <div class="col-md-6" v-for="blog in blogs">
                             
-                            <div class="card mt-2">
+                            <div class="card mt-2" style="border-radius: 10px;">
                                 <div class="card-image" v-if="blog.image">
-                                    <img :src="blog.image" alt="Image" width="100%" height="100%"/>
+                                    <img :src="blog.image" alt="Image" width="100%" height="300px"/>
                                 </div>
                                 <div class="card-image" v-else>                                    
                                     <img :src="imagePath" alt="Image" width="100%" height="100%"/>
